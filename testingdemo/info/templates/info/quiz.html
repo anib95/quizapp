@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title> Profile Page </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/home/aniruddha/Desktop/CSS/page.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+    <body>
+
+
+<h1 style="text-align:center"> Quiz </h1>
+
+{%for question in questions%}
+<h4 style="text-align:left">{{question.question}}</h4><br>
+<>
+{%endfor%}
+
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if persondata.has_previous %}
+            <a href="?page={{ persondata.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ persondata.number }} of {{ persondata.paginator.num_pages }}.
+        </span>
+
+        {% if persondata.has_next %}
+            <a href="?page={{ persondata.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
