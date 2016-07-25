@@ -1,0 +1,46 @@
+<input>
+<head>
+    <title> Quiz </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/home/aniruddha/Desktop/CSS/page.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+
+
+
+<h1 style="text-align:center"> Quiz </h1>
+
+{%for question in questions%}
+<h4 style="text-align:left">{{question.question}}</h4><br>
+<form>
+<input type="radio" style="text-align:left" name="options" value="opt1">{{question.option1}}<br>
+<input type="radio" style="text-align:left" name="options" value="opt2">{{question.option2}}<br>
+<input type="radio" style="text-align:left" name="options" value="opt3">{{question.option3}}<br>
+<input type="radio" style="text-align:left" name="options" value="opt4">{{question.option4}}<br>
+
+    </form>
+{%endfor%}
+
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if questions.has_previous %}
+            <a href="?page={{ questions.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Question {{ questions.number }} of {{ questions.paginator.num_pages }}.
+        </span>
+
+        {% if questions.has_next %}
+            <a href="?page={{ questions.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+</body>
+</html>
